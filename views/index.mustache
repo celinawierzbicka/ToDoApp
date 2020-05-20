@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+</head>
+<body>
+    <h1>My To Do List.</h1>
+    <form action="/todos" method="post">
+        <input type="text" name="description" placeholder="Enter your task">
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        {{#todos}}
+            <li>
+                <form action="/todos/{{_id}}/completed" method="post">
+                    {{description}} - {{done}} <button type="submit">Done</button>
+                </form>
+            </li>
+        {{/todos}}
+    </ul>
+
+    <h3>Done</h3>
+    <ul>
+        {{#doneTodos}}
+            <li>
+                <form action="/todos/{{_id}}/completed" method="post">
+                    {{description}} - {{done}} <button type="submit">Not done yet!</button>
+                </form>
+            </li>
+        {{/doneTodos}}
+    </ul>
+
+</body>
+</html>
